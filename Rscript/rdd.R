@@ -42,9 +42,9 @@ library(texreg)
 library(sandwich)
 library(KernSmooth)
 
-hansen_dwi <- read.csv("https://github.com/scunning1975/causal-inference-class/tree/master/Data/hansen_dwi.csv", header=TRUE)
+
 # read data
-hansen_dwi <- read.csv("~/GitHub/CAUSAL INFERENCE CLASS/causal-inference-class/Data/hansen_dwi.csv", header=FALSE)
+hansen_dwi <- read.csv("~/GitHub/CAUSAL INFERENCE CLASS/causal-inference-class/Data/hansen_dwi.csv", header=TRUE)
 # Q3
 BAC = hansen_dwi %>%
   mutate_vars(.cols = bac1, .func = function(bac1) ifelse(bac1<0.08,0,1))
@@ -151,16 +151,6 @@ ggplot(Q6, aes(bac1, white)) +
 
 
 
-
-
-
-
-ggplot(data=BAC, aes(x=bac1, y=acc, group=gg_group)) +
-  labs(x=" ", y="y") +
-  geom_point() +
-  geom_smooth(method="lm") +
-  theme(panel.grid=element_blank(), panel.background=element_rect(fill='transparent', color='black')) +
-  guides(color=guide_legend(title="x"))
 
 
 
